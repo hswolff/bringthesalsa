@@ -1,9 +1,16 @@
 <div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+	<form ng-submit="addItem({'name': newItem})">
+	<input type="text" placeholder="Add New Food" ng-model="newItem">
+	</form>
+
+	<ul>
+	    <li ng-repeat="item in items">
+	    	{{item.name}}   <a class="btn btn-mini" ng-click="removeItem($index)">Delete</a>
+	    	<br/>
+	    	<select ng-model="item.type" ng-options="type for type in types"></select>
+	    	<select ng-model="item.quantity" ng-options="num for num in quantity"></select>
+	    	<select ng-model="item.who" ng-options="who for who in people"></select>
+	    	<input type="text" ng-model="item.notes">
+	    </li>
+	</ul>
 </div>
