@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bringthesalsaApp', [])
+angular.module('BringTheSalsaApp', [])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
