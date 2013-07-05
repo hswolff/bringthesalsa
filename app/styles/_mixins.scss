@@ -141,3 +141,50 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
   @include prefixer(animation-fill-mode, $modes, webkit moz spec);
 }
 // end source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_animation.scss
+
+
+// source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_keyframes.scss
+// Adds keyframes blocks for supported prefixes, removing redundant prefixes in the block's content
+@mixin keyframes($name) {
+  $original-prefix-for-webkit:    $prefix-for-webkit;
+  $original-prefix-for-mozilla:   $prefix-for-mozilla;
+  $original-prefix-for-microsoft: $prefix-for-microsoft;
+  $original-prefix-for-opera:     $prefix-for-opera;
+  $original-prefix-for-spec:      $prefix-for-spec;
+
+  @if $original-prefix-for-webkit {
+    @include disable-prefix-for-all();
+    $prefix-for-webkit: true;
+    @-webkit-keyframes #{$name} {
+      @content;
+    }
+  }
+  @if $original-prefix-for-mozilla {
+    @include disable-prefix-for-all();
+    $prefix-for-mozilla: true;
+    @-moz-keyframes #{$name} {
+      @content;
+    }
+  }
+  @if $original-prefix-for-opera {
+    @include disable-prefix-for-all();
+    $prefix-for-opera: true;
+    @-o-keyframes #{$name} {
+      @content;
+    }
+  }
+  @if $original-prefix-for-spec {
+    @include disable-prefix-for-all();
+    $prefix-for-spec: true;
+    @keyframes #{$name} {
+      @content;
+    }
+  }
+
+  $prefix-for-webkit:    $original-prefix-for-webkit;
+  $prefix-for-mozilla:   $original-prefix-for-mozilla;
+  $prefix-for-microsoft: $original-prefix-for-microsoft;
+  $prefix-for-opera:     $original-prefix-for-opera;
+  $prefix-for-spec:      $original-prefix-for-spec;
+}
+// end source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_keyframes.scss

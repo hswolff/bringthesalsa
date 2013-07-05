@@ -1,10 +1,11 @@
 @import "common";
 
-@-webkit-keyframes help-animation {
+@include keyframes(help-animation) {
     to {
         color: red;
     }
 }
+
 .header-wrapper {
     background: red;
     border-bottom: 1px solid #000;

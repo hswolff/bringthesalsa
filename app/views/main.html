@@ -1,9 +1,3 @@
-<div class="hero-unit add-item-container">
-	<form ng-submit="addItem({'name': newItem})">
-	   <input type="text" placeholder="What needs bringing?" ng-model="newItem">
-	</form>
-</div>
-
 <ul class="items-list-container">
     <li ng-repeat="item in items">
     	{{item.name}}   <a class="btn btn-mini" ng-click="removeItem($index)">Delete</a>

@@ -1,0 +1,51 @@
+@import "common";
+
+@include keyframes(add-item-wrapper-animation) {
+    from {
+        background-color: #ADADAD;
+    }
+    to {
+        background-color: #383030;
+    }
+}
+
+.add-item-attention-needed {
+    @include animation(add-item-wrapper-animation 4s linear 2s infinite alternate);
+}
+
+.add-item-wrapper {
+    background-color: #ADADAD;
+    padding: 20px;
+    @include transition(background 0.5s ease-in);
+}
+
+.add-item-container {
+    margin: 0 auto;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 20px;
+    form {
+        margin: 0;
+        position: relative;
+        &.adding .add-item-submit {
+            opacity: 1;
+        }
+    }
+    .add-item-input {
+        margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px 10px;
+    }
+    .add-item-submit {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        opacity: 0;
+        @include transition(opacity 0.5s ease-in);
+    }
+}
