@@ -1,0 +1,143 @@
+// source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/addons/_prefixer.scss
+//************************************************************************//
+// Example: @include prefixer(border-radius, $radii, webkit ms spec);
+//************************************************************************//
+$prefix-for-webkit:    true !default;
+$prefix-for-mozilla:   true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera:     true !default;
+$prefix-for-spec:      true !default; // required for keyframe mixin
+
+@mixin prefixer ($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit {
+      @if $prefix-for-webkit {
+        -webkit-#{$property}: $value;
+      }
+    }
+    @else if $prefix == moz {
+      @if $prefix-for-mozilla {
+        -moz-#{$property}: $value;
+      }
+    }
+    @else if $prefix == ms {
+      @if $prefix-for-microsoft {
+        -ms-#{$property}: $value;
+      }
+    }
+    @else if $prefix == o {
+      @if $prefix-for-opera {
+        -o-#{$property}: $value;
+      }
+    }
+    @else if $prefix == spec {
+      @if $prefix-for-spec {
+        #{$property}: $value;
+      }
+    }
+    @else  {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}
+
+@mixin disable-prefix-for-all() {
+  $prefix-for-webkit:    false;
+  $prefix-for-mozilla:   false;
+  $prefix-for-microsoft: false;
+  $prefix-for-opera:     false;
+  $prefix-for-spec:      false;
+}
+// end source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/addons/_prefixer.scss
+
+// source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_transition.scss
+// Shorthand mixin. Supports multiple parentheses-deliminated values for each variable.
+// Example: @include transition (all, 2.0s, ease-in-out);
+//          @include transition ((opacity, width), (1.0s, 2.0s), ease-in, (0, 2s));
+//          @include transition ($property:(opacity, width), $delay: (1.5s, 2.5s));
+
+@mixin transition ($properties...) {
+  @if length($properties) >= 1 {
+    @include prefixer(transition, $properties, webkit moz spec);
+  }
+
+  @else {
+    $properties: all 0.15s ease-out 0;
+    @include prefixer(transition, $properties, webkit moz spec);
+  }
+}
+
+@mixin transition-property ($properties...) {
+   -webkit-transition-property: transition-property-names($properties, 'webkit');
+      -moz-transition-property: transition-property-names($properties, 'moz');
+           transition-property: transition-property-names($properties, false);
+}
+
+@mixin transition-duration ($times...) {
+  @include prefixer(transition-duration, $times, webkit moz spec);
+}
+
+@mixin transition-timing-function ($motions...) {
+// ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier()
+  @include prefixer(transition-timing-function, $motions, webkit moz spec);
+}
+
+@mixin transition-delay ($times...) {
+  @include prefixer(transition-delay, $times, webkit moz spec);
+}
+// end source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_transition.scss
+
+// source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_animation.scss
+// http://www.w3.org/TR/css3-animations/#the-animation-name-property-
+// Each of these mixins support comma separated lists of values, which allows different transitions for individual properties to be described in a single style rule. Each value in the list corresponds to the value at that same position in the other properties.
+
+// Official animation shorthand property.
+@mixin animation ($animations...) {
+  @include prefixer(animation, $animations, webkit moz spec);
+}
+
+// Individual Animation Properties
+@mixin animation-name ($names...) {
+  @include prefixer(animation-name, $names, webkit moz spec);
+}
+
+
+@mixin animation-duration ($times...) {
+  @include prefixer(animation-duration, $times, webkit moz spec);
+}
+
+
+@mixin animation-timing-function ($motions...) {
+// ease | linear | ease-in | ease-out | ease-in-out
+  @include prefixer(animation-timing-function, $motions, webkit moz spec);
+}
+
+
+@mixin animation-iteration-count ($values...) {
+// infinite | <number>
+  @include prefixer(animation-iteration-count, $values, webkit moz spec);
+}
+
+
+@mixin animation-direction ($directions...) {
+// normal | alternate
+  @include prefixer(animation-direction, $directions, webkit moz spec);
+}
+
+
+@mixin animation-play-state ($states...) {
+// running | paused
+  @include prefixer(animation-play-state, $states, webkit moz spec);
+}
+
+
+@mixin animation-delay ($times...) {
+  @include prefixer(animation-delay, $times, webkit moz spec);
+}
+
+
+@mixin animation-fill-mode ($modes...) {
+// none | forwards | backwards | both
+  @include prefixer(animation-fill-mode, $modes, webkit moz spec);
+}
+// end source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_animation.scss

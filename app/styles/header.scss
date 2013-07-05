@@ -1,4 +1,10 @@
-@import "variables";
+@import "common";
+
+@-webkit-keyframes help-animation {
+    to {
+        color: red;
+    }
+}
 
 .header-container {
     $logoSize: 50px;
@@ -14,5 +20,8 @@
         font-family: 'Permanent Marker', cursive;
         font-weight: 400;
         font-size: $logoSize;
+    }
+    .help {
+        // @include animation(help-animation 2s linear infinite alternate-reverse);
     }
 }
