@@ -1,5 +1,9 @@
 @import "bootstrap-sass/lib/bootstrap";
 
+@import "variables";
+@import "header.scss";
+@import "partypage.scss";
+
 /* Put your CSS here */
 html, body {
   margin: 20px;
@@ -9,30 +13,4 @@ body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
-}
-
-.hero-unit {
-    margin: 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
-}
-
-.add-item-container {
-    form {
-        margin: 0;
-    }
-    input {
-        margin: 0;
-        width: 100%;
-    }
-}
-
-.items-list-container {
-    list-style: none;
-    margin: 0;
 }

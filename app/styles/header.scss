@@ -1,0 +1,18 @@
+@import "variables";
+
+.header-container {
+    $logoSize: 50px;
+    $preLogoSize: $logoSize * 1/4;
+    text-align: center;
+    color: $logoColor;
+    .logo-pre {
+        font-size: $preLogoSize;
+        position: relative;
+        right: 150px;
+    }
+    .logo {
+        font-family: 'Permanent Marker', cursive;
+        font-weight: 400;
+        font-size: $logoSize;
+    }
+}
