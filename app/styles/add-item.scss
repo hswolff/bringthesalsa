@@ -10,11 +10,11 @@
 }
 
 .add-item-attention-needed {
-    @include animation(add-item-wrapper-animation 4s linear 2s infinite alternate);
+    // @include animation(add-item-wrapper-animation 4s linear 2s infinite alternate);
 }
 
 .add-item-wrapper {
-    background-color: #ADADAD;
+    // background-color: #ADADAD;
     padding: 20px;
     @include transition(background 0.5s ease-in);
 }
@@ -26,6 +26,7 @@
     font-weight: 200;
     line-height: 30px;
     background-color: #eee;
+    border: 1px solid #ADADAD;
     border-radius: 6px;
     padding: 20px;
     form {
@@ -33,6 +34,7 @@
         position: relative;
         &.adding .add-item-submit {
             opacity: 1;
+            visibility: visible;
         }
     }
     .add-item-input {
@@ -46,6 +48,7 @@
         top: 6px;
         right: 6px;
         opacity: 0;
+        visibility: hidden;
         @include transition(opacity 0.5s ease-in);
     }
 }
