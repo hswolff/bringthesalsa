@@ -5,16 +5,24 @@
         color: red;
     }
 }
+.header-wrapper {
+    background: red;
+    border-bottom: 1px solid #000;
+}
 
 .header-container {
+    padding: 20px;
     $logoSize: 50px;
     $preLogoSize: $logoSize * 1/4;
     text-align: center;
-    color: $logoColor;
+    color: #fff;
+    width: 300px;
+    margin: 0 auto;
     .logo-pre {
         font-size: $preLogoSize;
+        line-height: $preLogoSize;
         position: relative;
-        right: 150px;
+        left: -75px;
     }
     .logo {
         font-family: 'Permanent Marker', cursive;
