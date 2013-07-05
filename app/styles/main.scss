@@ -12,7 +12,7 @@ body {
 }
 
 .hero-unit {
-    margin: 50px auto 0 auto;
+    margin: 0 auto;
     width: 300px;
     font-size: 18px;
     font-weight: 200;
@@ -22,8 +22,17 @@ body {
     padding: 60px;
 }
 
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+.add-item-container {
+    form {
+        margin: 0;
+    }
+    input {
+        margin: 0;
+        width: 100%;
+    }
+}
+
+.items-list-container {
+    list-style: none;
+    margin: 0;
 }
