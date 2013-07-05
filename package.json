@@ -1,5 +1,5 @@
 {
-  "name": "bringthesalsa",
+  "name": "BringTheSalsa",
   "version": "0.0.0",
   "dependencies": {
     "grunt-karma": "~0.4.5"
