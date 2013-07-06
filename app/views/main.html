@@ -11,7 +11,7 @@
 			<span class="type label" ng-dblclick="edit('type')" ng-hide="editing('type')">{{item.type}}</span>
 			<input class="type input" type="text" ng-show="editing('type')" ng-model="item.type" placeholder="drink, snack..." />
 
-			<span class="quantity label" ng-dblclick="edit('quantity')" ng-show="item.quantity > 1 && !editing('quantity')">{{item.quantity}}</span>
+			<span class="quantity label" ng-dblclick="edit('quantity')" ng-show="!editing('quantity')">{{item.quantity}}</span>
 			<input class="quantity input" type="text" ng-show="editing('quantity')" ng-model="item.quantity" placeholder="0,1..." />
 
 			<div class="well">
