@@ -1,21 +1,23 @@
 'use strict';
 
-var defaultItems = [
-  {'type': 'drink', 'what': 'Pepsi', 'quantity': 1, 'who': 'Joel', 'notes': 'Woaaah'},
-  {'type': 'drink', 'what': 'Coke', 'quantity': 3, 'who': 'Bob'},
-  {'type': 'snack', 'what': 'Chips & Salsa', 'quantity':  1, 'who': 'Howdy'}
-];
+var ItemCollection = function(angularFireCollection) {
+  this.angularFireCollection = angularFireCollection;
 
-var localStorageItems = angular.fromJson(localStorage.getItem('items'));
-
-var ItemCollection = function() {
-  this.models = localStorageItems && localStorageItems.length ? localStorageItems : defaultItems;
+  this.models = this.defaultItems;
   this.types();
   this.currentFilter = 'all';
   angular.forEach(this.models, function(m) {
     m.currentlyEditing = false;
   });
   this.filter = angular.bind(this, this.filter);
+};
+
+ItemCollection.prototype.createFirebase = function(childLocation) {
+  var url = 'https://bringthesalsa.firebaseio.com/items';
+  if (childLocation) {
+    url += '/' + childLocation;
+  }
+  this.models = this.angularFireCollection(url);
 };
 
 ItemCollection.prototype.add = function(model) {
@@ -40,11 +42,23 @@ ItemCollection.prototype.toJson = function() {
   return angular.toJson(this.models);
 };
 
-ItemCollection.prototype.save = function() {
-  return localStorage.setItem('items', this.toJson());
+ItemCollection.prototype.save = function(item) {
+  if (this.models.update) {
+    this.models.update(item);
+  }
 };
 
-ItemCollection.prototype.columns = ['What', 'Type', 'Quantity', 'Who', 'Notes'];
+ItemCollection.prototype.reset = function() {
+  this.models = this.defaultItems;
+};
+
+ItemCollection.prototype.keys = ['what', 'type', 'quantity', 'who', 'notes'];
+
+ItemCollection.prototype.defaultItems = [
+  {'type': 'drink', 'what': 'Pepsi', 'quantity': 1, 'who': 'Joel', 'notes': 'Woaaah'},
+  {'type': 'drink', 'what': 'Coke', 'quantity': 3, 'who': 'Bob'},
+  {'type': 'snack', 'what': 'Chips & Salsa', 'quantity':  1, 'who': 'Howdy'}
+];
 
 ItemCollection.prototype.types = function() {
   var types = ['all'];

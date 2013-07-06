@@ -1,7 +1,14 @@
 'use strict';
 
 angular.module('BringTheSalsaApp')
-  .controller('MainCtrl', function ($scope, Items) {
+  .controller('MainCtrl', function ($scope, Items, $routeParams) {
+    var partyId = $routeParams.partyId;
+    if (partyId) {
+      Items.createFirebase(partyId);
+    } else {
+      Items.reset();
+    }
+
     $scope.Items = Items;
 
     $scope.remove = function(i) {
@@ -13,6 +20,7 @@ angular.module('BringTheSalsaApp')
     $scope.edit = function (property) {
       if ($scope.Items.models[this.$index].currentlyEditing) {
         $scope.Items.models[this.$index].currentlyEditing = '';
+        $scope.Items.save($scope.Items.models[this.$index]);
       } else {
         $scope.Items.models[this.$index].currentlyEditing = property;
       }
@@ -33,8 +41,4 @@ angular.module('BringTheSalsaApp')
       }
     }
     $scope.people = ['Joel', 'Bob', 'Howdy', 'Bill'];
-
-    $scope.$watch('Items.models', function() {
-      Items.save();
-    }, true);
   });
