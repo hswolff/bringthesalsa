@@ -10,6 +10,19 @@ angular.module('BringTheSalsaApp')
       }
     };
 
+    $scope.edit = function (property) {
+      if ($scope.Items.models[this.$index].currentlyEditing) {
+        $scope.Items.models[this.$index].currentlyEditing = '';
+      } else {
+        $scope.Items.models[this.$index].currentlyEditing = property;
+      }
+    };
+
+    $scope.editing = function (property) {
+      var editing = $scope.Items.models[this.$index].currentlyEditing;
+      return editing === 'all' || editing === property;
+    };
+
     $scope.types = ['drink', 'snack'];
     var count = 0;
     $scope.quantity = [];

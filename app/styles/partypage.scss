@@ -34,21 +34,39 @@
 		font-size: 24px;
 		font-weight: bold;
 		margin: 0;
-	}
-	.who {
-		font-size: 24px;
+		&.input {
+			width: 75%;
+		}
 	}
 	.type, .quantity {
 		float: right;
 	}
-	.label + .label {
+	.quantity {
 		margin-right: 5px;
+	}
+	.quantity.input {
+		width: 40px;
+	}
+	.type.input {
+		width: 100px;
+	}
+	.who {
+		font-size: 24px;
+		&.input {
+			font-size: inherit;
+			width: 97%;
+		}
 	}
 	.notes {
 		display: block;
 		margin: 10px 0 0;
 		border-top: 1px solid grey;
 		padding-top: 5px;
+		&.input {
+			font-size: inherit;
+			width: 97%;
+			border-top: inherit;
+		}
 	}
 }
 

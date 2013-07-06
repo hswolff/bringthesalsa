@@ -2,13 +2,23 @@
 	<ul class="items-list-view">
 		<li ng-repeat="item in Items.models">
 			<i class="remove modify icon-trash" ng-click="remove($index)"></i>
-			<i class="edit modify icon-pencil" ng-click="edit($index)"></i>
-			<p class="what">{{item.what}}</p>
-			<span class="type label">{{item.type}}</span>
-			<span class="quantity label" ng-show="item.quantity > 1">{{item.quantity}}</span>
+			<i class="edit modify icon-pencil" ng-click="edit('all')"></i>
+
+			<p class="what" ng-dblclick="edit('what')" ng-hide="editing('what')">{{item.what}}</p>
+			<input class="what input" type="text" ng-show="editing('what')" ng-model="item.what" placeholder="Salsa, chips..." />
+
+			<span class="type label" ng-dblclick="edit('type')" ng-hide="editing('type')">{{item.type}}</span>
+			<input class="type input" type="text" ng-show="editing('type')" ng-model="item.type" placeholder="drink, snack..." />
+
+			<span class="quantity label" ng-dblclick="edit('quantity')" ng-show="item.quantity > 1 || !editing('quantity')">{{item.quantity}}</span>
+			<input class="quantity input" type="text" ng-show="editing('quantity')" ng-model="item.quantity" placeholder="0,1..." />
+
 			<div class="well">
-				<span class="who">{{item.who}}</span>
-				<small class="notes" ng-show="item.notes">{{item.notes}}</small>
+				<span class="who" ng-dblclick="edit('who')" ng-show="!editing('who')">{{item.who}}</span>
+				<input class="who input" type="text" ng-show="editing('who')" ng-model="item.who" placeholder="Who is bringing?" />
+
+				<small class="notes" ng-dblclick="edit('notes')" ng-show="!editing('notes') && item.notes">{{item.notes}}</small>
+				<input class="notes input" type="text" ng-show="editing('notes')" ng-model="item.notes" placeholder="Notes" />
 			</div>
 		</li>
 	</ul>
