@@ -7,8 +7,8 @@ var defaultItems = [
 ];
 
 var Item = function(attrs) {
-  this.type = attrs.type;
   this.name = attrs.name;
+  this.type = attrs.type;
   this.quantity = attrs.quantity;
   this.who = attrs.who;
   this.notes = attrs.notes;
@@ -48,6 +48,8 @@ ItemCollection.prototype.toJson = function() {
 ItemCollection.prototype.save = function() {
   return localStorage.setItem('items', this.toJson());
 };
+
+ItemCollection.prototype.columns = ['Name', 'Type', 'Quantity', 'Who', 'Notes'];
 
 angular.module('BringTheSalsaApp')
   .service('Items', ItemCollection);

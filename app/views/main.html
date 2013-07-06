@@ -1,10 +1,18 @@
-<ul class="items-list-container">
-    <li ng-repeat="item in items">
-    	{{item.name}}   <a class="btn btn-mini" ng-click="removeItem($index)">Delete</a>
-    	<br/>
-    	<select ng-model="item.type" ng-options="type for type in types"></select>
-    	<select ng-model="item.quantity" ng-options="num for num in quantity"></select>
-    	<select ng-model="item.who" ng-options="who for who in people"></select>
-    	<input type="text" ng-model="item.notes">
-    </li>
-</ul>
+<div class="items-list-container">
+	<table class="table striped">
+		<thead>
+			<tr>
+				<td ng-repeat="column in Items.columns">{{column}}</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in Items.models">
+				<td>{{item.name}}   <a class="btn btn-mini" ng-click="Items.remove($index)">Delete</a></td>
+				<td><select ng-model="item.type" ng-options="type for type in types"></select></td>
+				<td><select ng-model="item.quantity" ng-options="num for num in quantity"></select></td>
+				<td><select ng-model="item.who" ng-options="who for who in people"></select></td>
+				<td><input type="text" ng-model="item.notes"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
