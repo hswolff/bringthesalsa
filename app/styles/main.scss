@@ -12,3 +12,7 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
+
+[class^="icon-"], [class*=" icon-"] {
+	background-image: url("http://twitter.github.io/bootstrap/assets/img/glyphicons-halflings.png");
+}

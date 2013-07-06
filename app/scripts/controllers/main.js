@@ -4,6 +4,12 @@ angular.module('BringTheSalsaApp')
   .controller('MainCtrl', function ($scope, Items) {
     $scope.Items = Items;
 
+    $scope.remove = function(i) {
+      if (window.confirm('Remove ' + $scope.Items.models[i].what + '?')) {
+        Items.remove(i);
+      }
+    };
+
     $scope.types = ['drink', 'snack'];
     var count = 0;
     $scope.quantity = [];

@@ -1,7 +1,8 @@
 <div class="items-list-container">
-	<h2>Who is bringing the...</h2>
 	<ul class="items-list-view">
 		<li ng-repeat="item in Items.models">
+			<i class="remove modify icon-trash" ng-click="remove($index)"></i>
+			<i class="edit modify icon-pencil" ng-click="edit($index)"></i>
 			<p class="what">{{item.what}}</p>
 			<span class="type label">{{item.type}}</span>
 			<span class="quantity label" ng-show="item.quantity > 1">{{item.quantity}}</span>

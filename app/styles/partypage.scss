@@ -19,7 +19,17 @@
 	li {
 		margin: 20px 0;
 	}
-
+	.modify {
+		float: right;
+		cursor: pointer;
+		display: none;
+	}
+	.edit {
+		margin-right: 5px;
+	}
+	li:hover .modify {
+		display: inline-block;
+	}
 	.what {
 		font-size: 24px;
 		font-weight: bold;
