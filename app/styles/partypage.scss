@@ -84,16 +84,3 @@
 		}
 	}
 }
-
-.items-list-edit {
-	display: none;
-    .quantity {
-    	$size: 70px;
-    	select {
-    		width: $size;
-    	}
-    }
-    input, select {
-    	width: 80%;
-    }
-}
