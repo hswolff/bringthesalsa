@@ -20,7 +20,7 @@ angular.module('BringTheSalsaApp')
 
     $scope.editing = function (property) {
       var editing = $scope.Items.models[this.$index].currentlyEditing;
-      return editing === 'all' || editing === property;
+      return editing === 'all' || editing === property || (editing && property === 'any');
     };
 
     $scope.types = ['drink', 'snack'];
