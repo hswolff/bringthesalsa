@@ -10,9 +10,12 @@ var localStorageItems = angular.fromJson(localStorage.getItem('items'));
 
 var ItemCollection = function() {
   this.models = localStorageItems && localStorageItems.length ? localStorageItems : defaultItems;
+  this.types();
+  this.currentFilter = 'all';
   angular.forEach(this.models, function(m) {
     m.currentlyEditing = false;
   });
+  this.filter = angular.bind(this, this.filter);
 };
 
 ItemCollection.prototype.add = function(model) {
@@ -42,6 +45,24 @@ ItemCollection.prototype.save = function() {
 };
 
 ItemCollection.prototype.columns = ['What', 'Type', 'Quantity', 'Who', 'Notes'];
+
+ItemCollection.prototype.types = function() {
+  var types = ['all'];
+  angular.forEach(this.models, function(m) {
+    if (types.indexOf(m.type) < 0) {
+      types.push(m.type);
+    }
+  });
+  return types;
+};
+
+ItemCollection.prototype.isCurrentFilter = function(filter) {
+  return this.currentFilter === filter;
+};
+
+ItemCollection.prototype.filter = function(item) {
+  return this.currentFilter === 'all' || item.type === this.currentFilter;
+};
 
 angular.module('BringTheSalsaApp')
   .service('Items', ItemCollection);

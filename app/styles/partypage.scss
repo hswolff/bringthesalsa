@@ -1,6 +1,8 @@
 @import "common";
 
 .items-list-container {
+	width: 342px;
+	margin: 0 auto;
 	h2 {
 		font-family: Baskerville, Tahoma, sans-serif;
 		width: 342px;
@@ -8,13 +10,16 @@
 	}
 }
 
+.type-nav {
+	a {
+		cursor: pointer;
+	}
+}
+
 .items-list-view {
 	list-style: none;
 	margin: 0;
 	font-family: Baskerville, Tahoma, sans-serif;
-
-	width: 342px;
-	margin: 0 auto;
 
 	li {
 		margin: 20px 0;
