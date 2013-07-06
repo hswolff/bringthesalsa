@@ -5,10 +5,17 @@ angular.module('BringTheSalsaApp')
     $scope.Items = Items;
 
     $scope.types = ['drink', 'snack'];
-    $scope.quantity = [0,1,2,3,4,5,6,7,8,9];
+    var count = 0;
+    $scope.quantity = [];
+    while (count > -1) {
+      $scope.quantity.push(count);
+      if (++count > 10) {
+        count = -1;
+      }
+    }
     $scope.people = ['Joel', 'Bob', 'Howdy', 'Bill'];
 
-    $scope.$watch('items', function() {
+    $scope.$watch('Items.models', function() {
       Items.save();
     }, true);
   });

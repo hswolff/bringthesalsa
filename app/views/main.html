@@ -1,5 +1,5 @@
 <div class="items-list-container">
-	<table class="table striped">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<td ng-repeat="column in Items.columns">{{column}}</td>
@@ -7,11 +7,22 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="item in Items.models">
-				<td>{{item.name}}   <a class="btn btn-mini" ng-click="Items.remove($index)">Delete</a></td>
-				<td><select ng-model="item.type" ng-options="type for type in types"></select></td>
-				<td><select ng-model="item.quantity" ng-options="num for num in quantity"></select></td>
-				<td><select ng-model="item.who" ng-options="who for who in people"></select></td>
-				<td><input type="text" ng-model="item.notes"></td>
+				<td class="{{Items.columns[0]|lowercase}}">
+					<input type="text" ng-model="item.what" />
+				</td>
+				<td class="{{Items.columns[1]|lowercase}}">
+					<select ng-model="item.type" ng-options="type for type in types"></select>
+				</td>
+				<td class="{{Items.columns[2]|lowercase}}">
+					<select ng-model="item.quantity" ng-options="num for num in quantity"></select>
+				</td>
+				<td class="{{Items.columns[3]|lowercase}}">
+					<select ng-model="item.who" ng-options="who for who in people"></select>
+				</td>
+				<td class="{{Items.columns[4]|lowercase}}">
+					<input type="text" ng-model="item.notes">
+					<button class="close" ng-click="Items.remove($index)">&times;</button>
+				</td>
 			</tr>
 		</tbody>
 	</table>

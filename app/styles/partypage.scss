@@ -3,4 +3,13 @@
 .items-list-container {
     list-style: none;
     margin: 0;
+    .quantity {
+    	$size: 70px;
+    	select {
+    		width: $size;
+    	}
+    }
+    input, select {
+    	width: 80%;
+    }
 }

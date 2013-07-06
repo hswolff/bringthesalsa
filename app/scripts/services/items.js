@@ -1,38 +1,18 @@
 'use strict';
 
 var defaultItems = [
-  {'type': 'drink', 'name': 'Pepsi', 'quantity': 1, 'who': 'Joel', 'notes': 'Woaaah'},
-  {'type': 'drink', 'name': 'Coke', 'quantity': 3, 'who': 'Bob'},
-  {'type': 'snack', 'name': 'Chips & Salsa', 'quantity':  1, 'who': 'Howdy'}
+  {'type': 'drink', 'what': 'Pepsi', 'quantity': 1, 'who': 'Joel', 'notes': 'Woaaah'},
+  {'type': 'drink', 'what': 'Coke', 'quantity': 3, 'who': 'Bob'},
+  {'type': 'snack', 'what': 'Chips & Salsa', 'quantity':  1, 'who': 'Howdy'}
 ];
-
-var Item = function(attrs) {
-  this.name = attrs.name;
-  this.type = attrs.type;
-  this.quantity = attrs.quantity;
-  this.who = attrs.who;
-  this.notes = attrs.notes;
-};
-Item.prototype.toJson = function() {
-  return angular.toJson(this);
-};
-
 
 var localStorageItems = angular.fromJson(localStorage.getItem('items'));
 
 var ItemCollection = function() {
-  this.modelType = Item;
-  var models = localStorageItems || defaultItems;
-  models = Array.prototype.concat.call([], models);
-  for (var i = 0, l = models.length; i < l; i++) {
-    var model = new this.modelType(models[i]);
-    models[i] = model;
-  }
-  this.models = models;
+  this.models = localStorageItems.length ? localStorageItems : defaultItems;
 };
 
-ItemCollection.prototype.add = function(attrs) {
-  var model = new this.modelType(attrs);
+ItemCollection.prototype.add = function(model) {
   this.models.push(model);
   return model;
 };
@@ -49,7 +29,7 @@ ItemCollection.prototype.save = function() {
   return localStorage.setItem('items', this.toJson());
 };
 
-ItemCollection.prototype.columns = ['Name', 'Type', 'Quantity', 'Who', 'Notes'];
+ItemCollection.prototype.columns = ['What', 'Type', 'Quantity', 'Who', 'Notes'];
 
 angular.module('BringTheSalsaApp')
   .service('Items', ItemCollection);
