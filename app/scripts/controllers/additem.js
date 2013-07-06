@@ -3,7 +3,7 @@
 angular.module('BringTheSalsaApp')
   .controller('AddItemCtrl', function ($scope, Items) {
     $scope.addItem = function (newItem) {
-      if (!newItem.name) {
+      if (!newItem) {
         return;
       }
       Items.add(newItem);

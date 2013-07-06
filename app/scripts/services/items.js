@@ -13,7 +13,10 @@ var ItemCollection = function() {
 };
 
 ItemCollection.prototype.add = function(model) {
-  this.models.push(model);
+  if (angular.isString(model)) {
+    model = {'what': model};
+  }
+  this.models.unshift(model);
   return model;
 };
 

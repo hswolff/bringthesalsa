@@ -36,7 +36,7 @@
 
     <div class="add-item-wrapper" ng-class="{'add-item-attention-needed': !newItem.length}" ng-controller="AddItemCtrl">
         <div class="hero-unit add-item-container">
-            <form ng-submit="addItem({'name': newItem})" ng-class="{'adding': newItem.length}">
+            <form ng-submit="addItem(newItem)" ng-class="{'adding': newItem.length}">
                <input class="add-item-input" type="text" placeholder="What needs bringing?" ng-model="newItem">
                <input class="add-item-submit btn btn-success" type="submit" value="Add">
             </form>
