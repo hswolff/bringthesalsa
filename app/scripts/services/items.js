@@ -9,18 +9,23 @@ var defaultItems = [
 var localStorageItems = angular.fromJson(localStorage.getItem('items'));
 
 var ItemCollection = function() {
-  this.models = localStorageItems.length ? localStorageItems : defaultItems;
+  this.models = localStorageItems && localStorageItems.length ? localStorageItems : defaultItems;
   angular.forEach(this.models, function(m) {
     m.currentlyEditing = false;
   });
 };
 
 ItemCollection.prototype.add = function(model) {
-  if (angular.isString(model)) {
-    model = {'what': model};
+  function formatModel(model) {
+    if (angular.isString(model)) {
+      model = {'what': model};
+    }
+    // model.currentlyEditing = 'all';
+    model.quantity = 1;
+    model.who = 'Someone bring this!';
+    return model;
   }
-  model.currentlyEditing = 'all';
-  this.models.unshift(model);
+  this.models.unshift(formatModel(model));
   return model;
 };
 
