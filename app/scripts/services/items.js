@@ -1,6 +1,10 @@
+/* global Firebase */
 'use strict';
 
 var ItemCollection = function(angularFireCollection) {
+  this.collectionChildPath = 'items/';
+  var url = 'https://bringthesalsa.firebaseio.com/';
+  this.firebase = new Firebase(url);
   this.angularFireCollection = angularFireCollection;
 
   this.models = this.defaultItems;
@@ -13,11 +17,8 @@ var ItemCollection = function(angularFireCollection) {
 };
 
 ItemCollection.prototype.createFirebase = function(childLocation) {
-  var url = 'https://bringthesalsa.firebaseio.com/items';
-  if (childLocation) {
-    url += '/' + childLocation;
-  }
-  this.models = this.angularFireCollection(url);
+  this.firebase = this.firebase.root().child(this.collectionChildPath + childLocation);
+  this.models = this.angularFireCollection(this.firebase);
 };
 
 ItemCollection.prototype.add = function(model) {
@@ -30,12 +31,20 @@ ItemCollection.prototype.add = function(model) {
     model.who = 'Someone bring this!';
     return model;
   }
-  this.models.unshift(formatModel(model));
+  if (this.models.add) {
+    this.models.add(formatModel(model));
+  } else {
+    this.models.push(formatModel(model));
+  }
   return model;
 };
 
 ItemCollection.prototype.remove = function(index) {
-  this.models.splice(index, 1);
+  if (this.models.remove) {
+    this.models.remove(this.models[index]);
+  } else {
+    this.models.splice(index, 1);
+  }
 };
 
 ItemCollection.prototype.toJson = function() {
