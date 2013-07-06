@@ -16,3 +16,9 @@ body {
 [class^="icon-"], [class*=" icon-"] {
 	background-image: url("http://twitter.github.io/bootstrap/assets/img/glyphicons-halflings.png");
 }
+
+.footer-container {
+	width: $siteWidth;
+	text-align: right;
+	margin-top: 200px;
+}
