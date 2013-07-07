@@ -2,7 +2,7 @@
 'use strict';
 
 var ItemCollection = function(angularFireCollection) {
-  this.collectionChildPath = 'items/';
+  this.collectionChildPath = 'party/';
   var url = 'https://bringthesalsa.firebaseio.com/';
   this.firebase = new Firebase(url);
   this.angularFireCollection = angularFireCollection;
@@ -17,8 +17,13 @@ var ItemCollection = function(angularFireCollection) {
 };
 ItemCollection.$inject = ['angularFireCollection'];
 
+ItemCollection.prototype.createCollection = function() {
+  this.firebase = this.firebase.root().child(this.collectionChildPath).push();
+  this.models = this.angularFireCollection(this.firebase);
+  return this.firebase.name();
+};
 
-ItemCollection.prototype.createFirebase = function(childLocation) {
+ItemCollection.prototype.setCollection = function(childLocation) {
   this.firebase = this.firebase.root().child(this.collectionChildPath + childLocation);
   this.models = this.angularFireCollection(this.firebase);
 };

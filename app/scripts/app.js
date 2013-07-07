@@ -1,12 +1,14 @@
 'use strict';
 
-angular.module('BringTheSalsaApp', ['firebase', 'ui.bootstrap']).config(function ($routeProvider) {
+var app = angular.module('BringTheSalsaApp', ['firebase', 'ui.bootstrap']);
+app.constant('urlPrefix', '/party/');
+app.config(function ($routeProvider, urlPrefix) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/party/:partyId', {
+      .when(urlPrefix + ':partyId', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })

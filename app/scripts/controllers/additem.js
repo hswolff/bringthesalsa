@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('BringTheSalsaApp')
-  .controller('AddItemCtrl', function ($scope, Items, $routeParams) {
+  .controller('AddItemCtrl', function ($scope, Items, $routeParams, $location, urlPrefix) {
     $scope.addItem = function (newItem) {
       if (!newItem) {
         return;
@@ -10,7 +10,8 @@ angular.module('BringTheSalsaApp')
       $scope.newItem = '';
     };
     $scope.createNewList = function() {
-      console.log('bob');
+      var listName = Items.createCollection();
+      $location.path(urlPrefix + listName);
     };
     $scope.$on('$routeChangeSuccess', function() {
       $scope.viewingList = $routeParams.partyId;

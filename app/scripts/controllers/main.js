@@ -4,7 +4,7 @@ angular.module('BringTheSalsaApp')
   .controller('MainCtrl', function ($scope, Items, $routeParams) {
     var partyId = $routeParams.partyId;
     if (partyId) {
-      Items.createFirebase(partyId);
+      Items.setCollection(partyId);
     } else {
       Items.reset();
     }
