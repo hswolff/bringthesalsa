@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('BringTheSalsaApp', ['firebase', 'ui.bootstrap']);
+var app = angular.module('BringTheSalsaApp', ['firebase']);
 app.constant('urlPrefix', '/party/');
 app.config(function ($routeProvider, urlPrefix) {
     $routeProvider
