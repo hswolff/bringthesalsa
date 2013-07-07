@@ -17,8 +17,19 @@ body {
 	background-image: url("http://twitter.github.io/bootstrap/assets/img/glyphicons-halflings.png");
 }
 
+.welcome-info {
+	width: $siteWidth;
+	margin: 0 auto 20px;
+	.alert {
+		cursor: pointer;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
 .footer-container {
 	width: $siteWidth;
 	text-align: right;
-	margin-top: 200px;
+	margin: 200px auto 20px;
 }
