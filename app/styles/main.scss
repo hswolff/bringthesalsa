@@ -13,6 +13,10 @@ body {
     color: #333;
 }
 
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+	width: $siteWidth;
+}
+
 [class^="icon-"], [class*=" icon-"] {
 	background-image: url("http://twitter.github.io/bootstrap/assets/img/glyphicons-halflings.png");
 }
