@@ -15,6 +15,8 @@ var ItemCollection = function(angularFireCollection) {
   });
   this.filter = angular.bind(this, this.filter);
 };
+ItemCollection.$inject = ['angularFireCollection'];
+
 
 ItemCollection.prototype.createFirebase = function(childLocation) {
   this.firebase = this.firebase.root().child(this.collectionChildPath + childLocation);
