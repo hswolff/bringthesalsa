@@ -15,14 +15,24 @@ body {
 
 .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
 	width: $siteWidth;
+	@include mobile {
+		width: $phoneSiteWidth;
+	}
 }
 
 [class^="icon-"], [class*=" icon-"] {
 	background-image: url("/images/glyphicons-halflings.png");
 }
 
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+	height: auto;
+}
+
 .welcome-info {
 	width: $siteWidth;
+	@include mobile {
+		width: $phoneSiteWidth;
+	}
 	margin: 0 auto 20px;
 	.alert {
 		cursor: pointer;
@@ -33,7 +43,6 @@ body {
 }
 
 .footer-container {
-	width: $siteWidth;
 	text-align: right;
 	margin: 200px auto 20px;
 }

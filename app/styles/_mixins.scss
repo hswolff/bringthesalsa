@@ -1,3 +1,11 @@
+@mixin mobile {
+  @media
+  only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    @content;
+  }
+}
+
+
 // source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/addons/_prefixer.scss
 //************************************************************************//
 // Example: @include prefixer(border-radius, $radii, webkit ms spec);
