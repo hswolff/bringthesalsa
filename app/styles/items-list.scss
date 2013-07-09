@@ -35,6 +35,11 @@
 				}
 			}
 		}
+		@include mobile {
+			.remove, .edit {
+				display: inline-block;
+			}
+		}
 	}
 	.remove, .edit {
 		display: none;
