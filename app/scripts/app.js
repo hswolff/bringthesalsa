@@ -1,8 +1,8 @@
 'use strict';
 
-var app = angular.module('BringTheSalsaApp', ['ngRoute', 'firebase']);
-app.constant('urlPrefix', '/party/');
-app.config(function ($routeProvider, urlPrefix) {
+angular.module('BringTheSalsaApp', ['ngRoute', 'firebase'])
+  .constant('urlPrefix', '/party/')
+  .config(function ($routeProvider, urlPrefix) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
