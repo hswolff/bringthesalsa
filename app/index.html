@@ -30,7 +30,7 @@
     </div>
 
     <div class="add-item-wrapper" ng-class="{'add-item-attention-needed': !newItem.length}" ng-controller="AddItemCtrl">
-        <div class="welcome-info" ng-show="!viewingList" style="display: none;">
+        <div class="welcome-info" ng-hide="viewingList">
             <p>Do you host parties?</p>
             <p>Are you annoyed by organizing who is bringing what?</p>
             <p>Bring the Salsa is here to help.</p>
