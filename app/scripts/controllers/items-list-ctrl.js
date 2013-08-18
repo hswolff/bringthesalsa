@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('BringTheSalsaApp')
-  .controller('MainCtrl', function ($scope, Items, $routeParams) {
+  .controller('ItemsListCtrl', function ($scope, Items, $routeParams) {
     var partyId = $routeParams.partyId;
-    if (partyId) {
+    if (partyId && partyId !== 'demo') {
       Items.setCollection(partyId);
     } else {
       Items.reset();

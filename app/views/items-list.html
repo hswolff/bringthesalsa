@@ -1,0 +1,31 @@
+<div class="items-list-container">
+	<ul class="nav nav-pills type-nav">
+		<li ng-repeat="type in model.Items.types()" ng-class="{'active':model.Items.isCurrentFilter(type)}">
+			<a ng-click="model.Items.setFilter(type)">{{type}}</a>
+		</li>
+	</ul>
+	<ul class="items-list-view">
+		<li ng-repeat="item in model.Items.models | filter:model.Items.filter" ng-class="{'editing':editing('any')}" ng-enter="edit('all')">
+			<i class="remove modify icon-trash" ng-click="remove($index)"></i>
+			<i class="edit modify icon-pencil" ng-click="edit('all')"></i>
+			<i class="done modify persist icon-ok" ng-click="edit('all')"></i>
+
+			<p class="what" ng-click="edit('what')" ng-hide="editing('what')">{{item.what}}</p>
+			<input class="what input" type="text" ng-show="editing('what')" ng-model="item.what" placeholder="Salsa, chips..." />
+
+			<span class="type label" ng-click="edit('type')" ng-hide="editing('type')">{{item.type}}</span>
+			<input class="type input" type="text" ng-show="editing('type')" ng-model="item.type" placeholder="drink, snack..." />
+
+			<span class="quantity label" ng-click="edit('quantity')" ng-show="!editing('quantity')">{{item.quantity}}</span>
+			<input class="quantity input" type="text" ng-show="editing('quantity')" ng-model="item.quantity" placeholder="0,1..." />
+
+			<div class="well">
+				<span class="who" ng-click="edit('who')" ng-show="!editing('who')">{{item.who}}</span>
+				<input class="who input" type="text" ng-show="editing('who')" ng-model="item.who" placeholder="Who is bringing?" />
+
+				<small class="notes" ng-click="edit('notes')" ng-show="!editing('notes') && item.notes">{{item.notes}}</small>
+				<input class="notes input" type="text" ng-show="editing('notes')" ng-model="item.notes" placeholder="Notes" />
+			</div>
+		</li>
+	</ul>
+</div>
