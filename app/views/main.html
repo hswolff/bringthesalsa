@@ -1,11 +1,11 @@
 <div class="items-list-container">
 	<ul class="nav nav-pills type-nav">
-		<li ng-repeat="type in Items.types()" ng-class="{'active':Items.isCurrentFilter(type)}">
-			<a ng-click="Items.currentFilter=type">{{type}}</a>
+		<li ng-repeat="type in model.Items.types()" ng-class="{'active':model.Items.isCurrentFilter(type)}">
+			<a ng-click="model.Items.setFilter(type)">{{type}}</a>
 		</li>
 	</ul>
 	<ul class="items-list-view">
-		<li ng-repeat="item in Items.models | filter:Items.filter" ng-class="{'editing':editing('any')}" ng-enter="edit('all')">
+		<li ng-repeat="item in model.Items.models | filter:model.Items.filter" ng-class="{'editing':editing('any')}" ng-enter="edit('all')">
 			<i class="remove modify icon-trash" ng-click="remove($index)"></i>
 			<i class="edit modify icon-pencil" ng-click="edit('all')"></i>
 			<i class="done modify persist icon-ok" ng-click="edit('all')"></i>

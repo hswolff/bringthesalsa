@@ -9,25 +9,27 @@ angular.module('BringTheSalsaApp')
       Items.reset();
     }
 
-    $scope.Items = Items;
+    $scope.model = {
+      Items: Items
+    };
 
     $scope.remove = function(i) {
-      if (window.confirm('Remove ' + $scope.Items.models[i].what + '?')) {
+      if (window.confirm('Remove ' + Items.models[i].what + '?')) {
         Items.remove(i);
       }
     };
 
     $scope.edit = function (property) {
-      if ($scope.Items.models[this.$index].currentlyEditing) {
-        $scope.Items.models[this.$index].currentlyEditing = '';
-        $scope.Items.save($scope.Items.models[this.$index]);
+      if (Items.models[this.$index].currentlyEditing) {
+        Items.models[this.$index].currentlyEditing = '';
+        Items.save(Items.models[this.$index]);
       } else {
-        $scope.Items.models[this.$index].currentlyEditing = property;
+        Items.models[this.$index].currentlyEditing = property;
       }
     };
 
     $scope.editing = function (property) {
-      var editing = $scope.Items.models[this.$index].currentlyEditing;
+      var editing = Items.models[this.$index].currentlyEditing;
       return editing === 'all' || editing === property || (editing && property === 'any');
     };
 
