@@ -68,6 +68,7 @@ angular.module('BringTheSalsaApp')
 
     this.reset = function() {
       this.models = defaultItems;
+      this.setFilter('all');
     };
 
     this.keys = ['what', 'type', 'quantity', 'who', 'notes'];
