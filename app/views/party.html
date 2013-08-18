@@ -1,0 +1,10 @@
+<div ng-if="model.demo">
+  <div class="demo-info">
+    <div class="alert alert-info">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Heads up!</strong> This is a demo. It is not saved. <a class="btn btn-primary" ng-click="createNewList()">Create your own</a>
+    </div>
+  </div>
+</div>
+<div ng-include="'views/add-item.html'"></div>
+<div ng-include="'views/items-list.html'"></div>

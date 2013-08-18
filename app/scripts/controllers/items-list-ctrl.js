@@ -10,6 +10,7 @@ angular.module('BringTheSalsaApp')
     }
 
     $scope.model = {
+      demo: partyId === 'demo',
       Items: Items
     };
 

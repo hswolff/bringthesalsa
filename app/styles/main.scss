@@ -36,12 +36,22 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 	@include mobile {
 		width: $phoneSiteWidth;
 	}
-	margin: 0 auto 20px;
-	.alert {
-		cursor: pointer;
-		&:hover {
-			text-decoration: underline;
+	margin: 20px auto;
+	.action {
+		text-align: center;
+		.btn {
+			cursor: pointer;
 		}
+		.or {
+		    display: inline-block;
+		}
+	}
+}
+
+.demo-info {
+	margin: 20px auto 0;
+	.alert {
+		margin-bottom: 0;
 	}
 }
 

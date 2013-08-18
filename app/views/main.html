@@ -1,1 +1,10 @@
-<div ng-include="'views/items-list.html'"></div>
+<div class="welcome-info" ng-hide="viewingList">
+    <p>Do you host parties?</p>
+    <p>Are you annoyed by organizing who is bringing what?</p>
+    <p>Bring the Salsa is here to help.</p>
+    <div class="action">
+        <a href="#/party/demo" class="btn btn-info">See a demo</a>
+        <div class="or">or</div>
+        <a class="btn btn-primary" ng-click="createNewList()">Create your own</a>
+    </div>
+</div>
