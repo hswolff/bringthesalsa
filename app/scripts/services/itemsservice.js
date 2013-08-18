@@ -25,7 +25,13 @@ angular.module('BringTheSalsaApp')
       return this.firebase.name();
     };
 
+    this.reset = function() {
+      this.setFilter('all');
+      this.models = defaultItems;
+    };
+
     this.setCollection = function(childLocation) {
+      this.setFilter('all');
       this.firebase = this.firebase.root().child(collectionChildPath + childLocation);
       this.models = angularFireCollection(this.firebase);
     };
@@ -64,11 +70,6 @@ angular.module('BringTheSalsaApp')
       if (this.models.update) {
         this.models.update(item);
       }
-    };
-
-    this.reset = function() {
-      this.models = defaultItems;
-      this.setFilter('all');
     };
 
     this.keys = ['what', 'type', 'quantity', 'who', 'notes'];

@@ -8,8 +8,7 @@ angular.module('BringTheSalsaApp', ['ngRoute', 'firebase'])
         templateUrl: 'views/main.html'
       })
       .when('/party/:partyId', {
-        templateUrl: 'views/party.html',
-        controller: 'ItemsListCtrl'
+        templateUrl: 'views/party.html'
       })
       .otherwise({
         redirectTo: '/'
@@ -22,6 +21,12 @@ angular.module('BringTheSalsaApp', ['ngRoute', 'firebase'])
       $location.path(urlPrefix + listName);
     };
     $rootScope.$on('$routeChangeSuccess', function() {
-      $rootScope.viewingList = $routeParams.partyId;
+      var partyId = $routeParams.partyId;
+      if (partyId && partyId !== 'demo') {
+        Items.setCollection(partyId);
+      } else {
+        Items.reset();
+      }
+      $rootScope.demo = partyId === 'demo';
     });
   }]);

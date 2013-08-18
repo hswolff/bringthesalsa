@@ -29,9 +29,6 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 }
 
 .welcome-info {
-	&.ng-hide {
-		display: none;
-	}
 	width: $siteWidth;
 	@include mobile {
 		width: $phoneSiteWidth;
