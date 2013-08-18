@@ -29,6 +29,13 @@
         font-family: 'Permanent Marker', cursive;
         font-weight: 400;
         font-size: $logoSize;
+        color: #FFF;
+        display: block;
+        line-height: 40px;
+        text-rendering: optimizelegibility;
+        &:hover {
+            text-decoration: none;
+        }
     }
     .help {
         // @include animation(help-animation 2s linear infinite alternate-reverse);
