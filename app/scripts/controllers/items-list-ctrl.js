@@ -11,16 +11,6 @@ angular.module('BringTheSalsaApp')
         Items.remove(i);
       }
     };
-    var throttle = function(fn, delay) {
-      var timer = null;
-      return function () {
-        var context = this, args = arguments;
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-          fn.apply(context, args);
-        }, delay);
-      };
-    };
     $scope.makeSaveable = function(item) {
       item.needsToBeSaved = true;
     };
