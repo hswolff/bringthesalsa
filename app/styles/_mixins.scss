@@ -5,6 +5,21 @@
   }
 }
 
+@mixin inputPlaceholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    @content;
+  }
+  &::-moz-placeholder {  /* Firefox 19+ */
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
 
 // source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/addons/_prefixer.scss
 //************************************************************************//
@@ -57,6 +72,31 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
   $prefix-for-spec:      false;
 }
 // end source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/addons/_prefixer.scss
+
+// source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/functions/_transition-property-name.scss
+// Return vendor-prefixed property names if appropriate
+// Example: transition-property-names((transform, color, background), moz) -> -moz-transform, color, background
+//************************************************************************//
+@function transition-property-names($props, $vendor: false) {
+  $new-props: ();
+  
+  @each $prop in $props {
+    $new-props: append($new-props, transition-property-name($prop, $vendor), comma);
+  }
+
+  @return $new-props;
+}
+
+@function transition-property-name($prop, $vendor: false) {
+  // put other properties that need to be prefixed here aswell
+  @if $vendor and $prop == transform {
+    @return unquote('-'+$vendor+'-'+$prop);
+  }
+  @else {
+    @return $prop;
+  }
+}
+// end source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/functions/_transition-property-name.scss
 
 // source: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_transition.scss
 // Shorthand mixin. Supports multiple parentheses-deliminated values for each variable.

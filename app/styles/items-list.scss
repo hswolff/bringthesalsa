@@ -18,13 +18,15 @@
 .items-list-view {
 	list-style: none;
 	margin: 0;
-	font-family: Baskerville, Tahoma, sans-serif;
+	&, input {
+		font-family: Baskerville, Tahoma, sans-serif;
+	}
 
 	li {
 		margin: 20px 0;
 		&:hover {
-			.remove, .edit {
-				display: inline-block;
+			.modify-icons {
+				display: block;
 			}
 		}
 		&.editing {
@@ -36,60 +38,110 @@
 			}
 		}
 		@include mobile {
-			.remove, .edit {
-				display: inline-block;
+			.modify-icons {
+				display: block;
 			}
 		}
 	}
-	.remove, .edit {
+	.modify-icons {
 		display: none;
+		position: absolute;
+		right: 0;
+		top: -18px;
+		.modify {
+			float: right;
+			cursor: pointer;
+		}
+		.done {
+			display: none;
+		}
+		.edit {
+			margin-right: 5px;
+		}
 	}
-	.modify {
-		float: right;
-		cursor: pointer;
+	.well {
+		position: relative;
+		.minor {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
 	}
-	.done {
-		display: none;
-	}
-	.edit {
-		margin-right: 5px;
+	input {
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		border: 1px solid transparent;
+		cursor: text;
+		@include inputPlaceholder {
+			color: #dfdfdf;
+		}
+		&:focus {
+			background-color: #FFF;
+			border: 1px solid #CCC;
+			box-shadow: inherit;
+		}
 	}
 	.what {
 		font-size: 24px;
 		font-weight: bold;
 		margin: 0;
-		&.input {
-			width: 86%;
+		margin-bottom: -10px;
+		margin-left: -5px;
+		position: relative;
+		z-index: 1;
+	}
+	.minor {
+		input {
+			display: inline-block;
+			padding: 2px 4px;
+			font-size: 11.844px;
+			font-weight: bold;
+			line-height: 14px;
+			color: #FFF;
+			vertical-align: baseline;
+			white-space: nowrap;
+			text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+			background-color: #999;
+			border-radius: 3px;
+			text-align: center;
+			@include transition-property(border, box-shadow, color, background);
+			&:focus {
+				background: #fff;
+				color: #999;
+			}
 		}
-	}
-	.type, .quantity {
-		float: right;
-	}
-	.quantity {
-		margin-right: 5px;
-	}
-	.quantity.input {
-		width: 40px;
-	}
-	.type.input {
-		width: 100px;
+		.type, .quantity {
+			float: right;
+		}
+		.quantity {
+			width: 14px;
+		}
+		.type {
+			margin-right: 5px;
+			width: 70px;
+		}
 	}
 	.who {
 		font-size: 24px;
-		&.input {
-			font-size: inherit;
-			width: 97%;
-		}
+		width: 100%;
+		margin-bottom: -14px;
+		margin-left: -10px;
+		padding-left: 10px;
 	}
 	.notes {
 		display: block;
 		margin: 10px 0 0;
-		border-top: 1px solid grey;
 		padding-top: 5px;
-		&.input {
-			font-size: inherit;
-			width: 97%;
-			border-top: inherit;
+		font-size: 12px;
+		width: 97%;
+		border-top: 1px solid grey;
+		border-radius: 0;
+		&:focus {
+			border-radius: 4px;
+		}
+		@include inputPlaceholder {
+			color: #999;
 		}
 	}
 }
