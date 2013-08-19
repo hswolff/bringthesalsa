@@ -42,6 +42,15 @@
       s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
 
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=596339493720145";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
     <script src="https://cdn.firebase.com/v0/firebase.js"></script>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -61,6 +70,7 @@
         <script src="scripts/directives/ng-enter.js"></script>
         <script src="scripts/directives/items-list.js"></script>
         <script src="scripts/directives/add-item.js"></script>
+        <script src="scripts/directives/facebook-social-plugin.js"></script>
         <!-- endbuild -->
 </body>
 </html>

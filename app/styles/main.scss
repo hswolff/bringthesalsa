@@ -56,6 +56,10 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 	}
 }
 
+.fb-social-plugin {
+	z-index: 2;
+}
+
 .footer-container {
 	text-align: right;
 	margin: 200px auto 20px;
