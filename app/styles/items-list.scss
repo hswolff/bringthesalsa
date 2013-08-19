@@ -29,12 +29,15 @@
 				display: block;
 			}
 		}
-		&.editing {
-			.modify {
+		.save {
+			display: none;
+		}
+		&.needs-to-be-saved {
+			.remove {
 				display: none;
-				&.persist {
-					display: inline-block;
-				}
+			}
+			.save {
+				display: inline-block;
 			}
 		}
 		@include mobile {
@@ -51,12 +54,6 @@
 		.modify {
 			float: right;
 			cursor: pointer;
-		}
-		.done {
-			display: none;
-		}
-		.edit {
-			margin-right: 5px;
 		}
 	}
 	.well {

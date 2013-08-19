@@ -11,29 +11,20 @@ angular.module('BringTheSalsaApp')
         Items.remove(i);
       }
     };
-
-    $scope.edit = function (property) {
-      if (Items.models[this.$index].currentlyEditing) {
-        Items.models[this.$index].currentlyEditing = '';
-        Items.save(Items.models[this.$index]);
-      } else {
-        Items.models[this.$index].currentlyEditing = property;
-      }
+    var throttle = function(fn, delay) {
+      var timer = null;
+      return function () {
+        var context = this, args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          fn.apply(context, args);
+        }, delay);
+      };
     };
-
-    $scope.editing = function (property) {
-      var editing = Items.models[this.$index].currentlyEditing;
-      return editing === 'all' || editing === property || (editing && property === 'any');
+    $scope.makeSaveable = function(item) {
+      item.needsToBeSaved = true;
     };
-
-    $scope.types = ['drink', 'snack'];
-    var count = 0;
-    $scope.quantity = [];
-    while (count > -1) {
-      $scope.quantity.push(count);
-      if (++count > 10) {
-        count = -1;
-      }
-    }
-    $scope.people = ['Joel', 'Bob', 'Howdy', 'Bill'];
+    $scope.save = function(item) {
+      Items.save(item);
+    };
   });

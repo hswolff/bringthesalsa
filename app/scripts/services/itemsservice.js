@@ -14,10 +14,10 @@ angular.module('BringTheSalsaApp')
 
     this.models = defaultItems;
     var currentFilter = 'all';
-    angular.forEach(this.models, function(m) {
-      m.currentlyEditing = false;
-    });
-    this.filter = angular.bind(this, this.filter);
+
+    this.filter = function(item) {
+      return currentFilter === 'all' || item.type === currentFilter;
+    };
 
     this.createCollection = function() {
       this.firebase = this.firebase.root().child(collectionChildPath).push();
@@ -41,7 +41,6 @@ angular.module('BringTheSalsaApp')
         if (angular.isString(model)) {
           model = {'what': model};
         }
-        // model.currentlyEditing = 'all';
         model.quantity = 1;
         model.who = 'Someone bring this!';
         return model;
@@ -90,9 +89,5 @@ angular.module('BringTheSalsaApp')
 
     this.setFilter = function(filter) {
       currentFilter = filter;
-    };
-
-    this.filter = function(item) {
-      return currentFilter === 'all' || item.type === currentFilter;
     };
   }]);

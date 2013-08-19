@@ -5,19 +5,18 @@
 		</li>
 	</ul>
 	<ul class="items-list-view">
-		<li ng-repeat="item in model.Items.models | filter:model.Items.filter" ng-class="{'editing':editing('any')}" ng-enter="edit('all')">
-			<input class="what input" type="text" ng-model="item.what" placeholder="Salsa, chips..." />
+		<li ng-repeat="item in model.Items.models | filter:model.Items.filter" ng-enter="save(item)">
+			<input ng-blur="save(item)" class="what input" type="text" ng-model="item.what" placeholder="Salsa, chips..." />
 			<div class="well">
 				<div class="modify-icons">
 					<i class="remove modify icon-trash" ng-click="remove($index)"></i>
-					<i class="done modify persist icon-ok" ng-click="edit('all')"></i>
 				</div>
 				<div class="minor">
-					<input class="quantity" type="text" ng-model="item.quantity" placeholder="3" />
-					<input class="type" type="text" ng-model="item.type" placeholder="drink, snack..." />
+					<input ng-blur="save(item)" class="quantity" type="text" ng-model="item.quantity" placeholder="3" />
+					<input ng-blur="save(item)" class="type" type="text" ng-model="item.type" placeholder="drink, snack..." />
 				</div>
-				<input class="who" type="text" ng-model="item.who" placeholder="Who is bringing?" />
-				<input class="notes" type="text" ng-model="item.notes" placeholder="Notes" />
+				<input ng-blur="save(item)" class="who" type="text" ng-model="item.who" placeholder="Who is bringing?" />
+				<input ng-blur="save(item)" class="notes" type="text" ng-model="item.notes" placeholder="Notes" />
 			</div>
 		</li>
 	</ul>
