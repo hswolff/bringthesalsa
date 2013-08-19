@@ -8,7 +8,8 @@ angular.module('BringTheSalsaApp', ['ngRoute', 'firebase'])
         templateUrl: 'views/main.html'
       })
       .when('/party/:partyId', {
-        templateUrl: 'views/party.html'
+        templateUrl: 'views/party.html',
+        controller: 'PartyCtrl'
       })
       .otherwise({
         redirectTo: '/'

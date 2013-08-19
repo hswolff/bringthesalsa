@@ -6,9 +6,10 @@
     </div>
   </div>
 </div>
-<div ng-if="!demo" facebook-social-plugin>
-  Not demo!
-  <div class="fb-social-plugin fb-send" data-href="http://example.com"></div>
+<div ng-if="!demo" social-plugins>
+  <h4>Share your list!</h4>
+  <div class="fb-social-plugin fb-like" data-href="{{shareUrl}}" data-width="342" data-show-faces="true" data-send="true"></div>
+  <a href="https://twitter.com/share" data-url="{{shareUrl}}" class="twitter-share-button" data-text="I'm hosting a party! Here's what I need!" data-hashtags="bringthesalsa">Tweet</a>
 </div>
 <add-item></add-item>
 <items-list></items-list>
